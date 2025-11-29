@@ -18,7 +18,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void saveUser(@RequestBody UserEntity userEntity){
+    public void saveUser(UserEntity userEntity){
         userRepository.save(userEntity);
     }
 }
