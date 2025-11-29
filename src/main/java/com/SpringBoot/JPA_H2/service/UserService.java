@@ -2,10 +2,12 @@ package com.SpringBoot.JPA_H2.service;
 
 import com.SpringBoot.JPA_H2.entity.UserEntity;
 import com.SpringBoot.JPA_H2.repository.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -20,5 +22,10 @@ public class UserService {
 
     public UserEntity saveUser(UserEntity userEntity){
         return userRepository.save(userEntity);
+    }
+
+    public Optional<UserEntity> getUserById(int id) {
+        Optional<UserEntity> optional = userRepository.findUserById(id);
+        return optional;
     }
 }
