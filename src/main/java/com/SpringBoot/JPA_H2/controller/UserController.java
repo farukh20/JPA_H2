@@ -33,4 +33,11 @@ public class UserController {
         return ResponseEntity.ok(optional);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEntity> saveUserAtId(@Valid @RequestBody UserEntity userEntity,@PathVariable int id){
+        return ResponseEntity.ok(userService.saveUserAtId(userEntity,id));
+    }
+
+
+
 }

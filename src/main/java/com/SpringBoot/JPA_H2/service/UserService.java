@@ -2,6 +2,7 @@ package com.SpringBoot.JPA_H2.service;
 
 import com.SpringBoot.JPA_H2.entity.UserEntity;
 import com.SpringBoot.JPA_H2.repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,5 +28,13 @@ public class UserService {
     public Optional<UserEntity> getUserById(int id) {
         Optional<UserEntity> optional = userRepository.findUserById(id);
         return optional;
+    }
+
+    public UserEntity saveUserAtId(UserEntity userEntity, int id) {
+        UserEntity optional = userRepository.findById(id);
+        optional.setName(userEntity.getName());
+        optional.setEmail(userEntity.getEmail());
+        optional.setNumber(userEntity.getNumber());
+        return userRepository.save(optional);
     }
 }
