@@ -37,4 +37,8 @@ public class UserService {
         optional.setNumber(userEntity.getNumber());
         return userRepository.save(optional);
     }
+
+    public UserEntity deleteUserById(int id) {
+        return userRepository.deleteById(id);
+    }
 }
